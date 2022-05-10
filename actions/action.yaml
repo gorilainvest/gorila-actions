@@ -13,8 +13,8 @@ runs:
       with:
         repository: gorilainvest/actions
         ssh-key: ${{ secrets.ACTIONS_CHECKOUT_SSH }}
-        path: ./.github/actions/
+        path: ./private_actions
     - name: Run reusable actions
-      uses: ./.github/actions/${{input.action}}
+      uses: ./private_actions/${{input.action}}
       with:
         username: gorilainvest
