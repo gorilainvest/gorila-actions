@@ -20,7 +20,7 @@ runs:
         ssh-key: ${{ inputs.sshkey }}
         path: ./private_actions
     - name: Run reusable actions
-      uses: ./private_actions/
+      uses: ./private_actions
       with:
         username: gorilainvest
         action-name: test-action
