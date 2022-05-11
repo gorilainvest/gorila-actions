@@ -17,9 +17,9 @@ runs:
       uses: actions/checkout@v3
       with:
         repository: gorilainvest/actions
-        ssh-key: ${{ inputs.ssh-key }}
+        ssh-key: ${{ github.event.inputs.ssh-key }}
         path: ./private_actions
     - name: Run reusable actions
-      uses: ./private_actions/${{ inputs.action }}
+      uses: ./private_actions/${{ github.event.inputs.action }}
       with:
         username: gorilainvest
