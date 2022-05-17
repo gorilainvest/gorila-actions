@@ -8,12 +8,15 @@ inputs:
   sshkey:
     description: "The ssh key to checkout private actions repo"
     required: true
-  ecr-access-key-id:
-    description: 'The ID to manage the ECR to push the image'
-    required: true
   ecr-access-key:
     description: 'The access key to manage the ECR to push the image'
     required: true
+  ecr-access-key-id:
+    description: 'The ID to manage the ECR to push the image'
+    required: true
+  npm-token:
+    description: 'The npm token used to build the app'
+    required: false
 
 runs:
   using: "composite"
@@ -26,8 +29,9 @@ runs:
         ssh-key: ${{ inputs.sshkey }}
         path: ./private_actions
     - name: Run reusable actions
-      uses: ./private_actions
+      uses: ./private_actions/
       with:
         action-name: ${{ inputs.action }}
-        ecr-access-key-id: ${{ inputs.ecr-access-key-id}}
-        ecr-access-key: ${{ inputs.ecr-access-key}}
+        ecr-access-key: ${{ inputs.ecr-access-key }}
+        ecr-access-key-id: ${{ inputs.ecr-access-key-id }}
+        npm-token: ${{ inputs.npm-token }}
