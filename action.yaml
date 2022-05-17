@@ -17,6 +17,9 @@ inputs:
   npm-token:
     description: 'The npm token used to build the app'
     required: false
+  environment:
+    description: 'The environment to deploy on'
+    required: false
 
 runs:
   using: "composite"
@@ -35,3 +38,4 @@ runs:
         ecr-access-key: ${{ inputs.ecr-access-key }}
         ecr-access-key-id: ${{ inputs.ecr-access-key-id }}
         npm-token: ${{ inputs.npm-token }}
+        environment: ${{ inputs.environment }}
