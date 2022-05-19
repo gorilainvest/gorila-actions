@@ -20,6 +20,12 @@ inputs:
   environment:
     description: 'The environment to deploy on'
     required: false
+  dockerfile-path:
+    description: 'The path to the Dockerfile to build'
+    required: false
+  dockerfile-context:
+    description: 'The context to use when building the Dockerfile'
+    required: false
 
 runs:
   using: "composite"
@@ -39,3 +45,5 @@ runs:
         ecr-access-key-id: ${{ inputs.ecr-access-key-id }}
         npm-token: ${{ inputs.npm-token }}
         environment: ${{ inputs.environment }}
+        dockerfile-path: ${{ inputs.dockerfile-path }}
+        dockerfile-context: ${{ inputs.dockerfile-context }}
