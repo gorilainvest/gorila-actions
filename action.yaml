@@ -2,12 +2,15 @@ name: "Run Gorila Action"
 description: "Run a custom action"
 
 inputs:
-  action:
-    description: "The action to run"
-    required: true
   sshkey:
     description: "The ssh key to checkout private actions repo"
     required: true
+  action:
+    description: "The action to run"
+    required: true
+  environment:
+    description: 'The environment to deploy on'
+    required: false
   ecr-access-key:
     description: 'The access key to manage the ECR to push the image'
     required: true
@@ -16,9 +19,6 @@ inputs:
     required: true
   npm-token:
     description: 'The npm token used to build the app'
-    required: false
-  environment:
-    description: 'The environment to deploy on'
     required: false
   dockerfile-path:
     description: 'The path to the Dockerfile to build'
@@ -41,9 +41,9 @@ runs:
       uses: ./private_actions/
       with:
         action-name: ${{ inputs.action }}
+        environment: ${{ inputs.environment }}
         ecr-access-key: ${{ inputs.ecr-access-key }}
         ecr-access-key-id: ${{ inputs.ecr-access-key-id }}
         npm-token: ${{ inputs.npm-token }}
-        environment: ${{ inputs.environment }}
         dockerfile-path: ${{ inputs.dockerfile-path }}
         dockerfile-context: ${{ inputs.dockerfile-context }}
