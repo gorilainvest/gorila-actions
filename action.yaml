@@ -11,6 +11,8 @@ inputs:
   environment:
     description: 'The environment to deploy on'
     required: false
+    # development or production (in future staging)
+    default: 'development'
   ecr-access-key:
     description: 'The access key to manage the ECR to push the image'
     required: true
@@ -23,9 +25,11 @@ inputs:
   dockerfile-path:
     description: 'The path to the Dockerfile to build'
     required: false
+    default: './Dockerfile'
   dockerfile-context:
     description: 'The context to use when building the Dockerfile'
     required: false
+    default: '.'
 
 runs:
   using: "composite"
