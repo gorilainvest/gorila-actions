@@ -30,6 +30,18 @@ inputs:
     description: 'The context to use when building the Dockerfile'
     required: false
     default: '.'
+  aws-access-key-id:
+    description: 'The AWS access key ID to use when building the Dockerfile'
+    required: false
+    default: ''
+  aws-access-key-secret:
+    description: 'The AWS access key secret to use when building the Dockerfile'
+    required: false
+    default: ''
+  aws-default-region:
+    description: 'The AWS default regions to use when building the Dockerfile'
+    required: false
+    default: ''
 
 runs:
   using: "composite"
@@ -51,3 +63,6 @@ runs:
         npm-token: ${{ inputs.npm-token }}
         dockerfile-path: ${{ inputs.dockerfile-path }}
         dockerfile-context: ${{ inputs.dockerfile-context }}
+        aws-access-key-id: ${{ inputs.aws-access-key-id }}
+        aws-access-key-secret: ${{ inputs.aws-access-key-secret }}
+        aws-default-region: ${{ inputs.aws-default-region }}
